@@ -8,7 +8,6 @@ db.sqlite3
 __pycache__
 db.sqlite3
 media
-__pycache__
 
 # Visual Studio Code # 
 .vscode 
@@ -28,4 +27,4 @@ env.bak/
 venv.bak/ 
 
 #frontend
-frontend/static/
+static

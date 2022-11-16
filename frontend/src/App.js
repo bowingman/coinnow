@@ -20,7 +20,7 @@ const App = () => {
                     Made with ❤️ using
                     <a
                       href="https://docs.djangoproject.com/en/3.2/"
-                      className="font-bold text-django"
+                      className="font-bold text-red-500"
                       target="_blank"
                     >
                       {" "}
