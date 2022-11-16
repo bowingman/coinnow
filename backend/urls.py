@@ -20,5 +20,6 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/products/', include('backend.products.urls')),
     path('', include('frontend.urls')),
 ]
