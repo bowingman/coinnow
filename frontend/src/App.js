@@ -2,20 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 
+import SideBar from "./components/layouts/sidebar";
 import ProductList from "./containers/products";
+import ProductCreate from "./containers/products/createProduct";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className="bg-[#292B2E] h-screen w-screen flex">
+        <SideBar />
         <Routes>
-          <Route exact path="/products" element={<ProductList />}></Route>
+          <Route exact path="/products" element={<ProductList />} />
+          <Route exact path="/products/create" element={<ProductCreate />} />
           <Route
             exact
             path="/login"
             element={
               <div>
-                <div className="flex h-screen text-xl md:text-lg">
+                <div className="text-xl md:text-lg">
                   <div className="m-auto text-center">
                     Made with ❤️ using
                     <a
