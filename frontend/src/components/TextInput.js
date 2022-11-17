@@ -10,7 +10,7 @@ const TextInput = ({
   label,
 }) => {
   return (
-    <div className={``}>
+    <div className="w-full">
       {label && <label className="text-white text-[32px]">{label}</label>}
       <input
         className={`w-full bg-[#0C0C0C] text-white pl-5 ${className}`}

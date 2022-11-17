@@ -1,10 +1,33 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import TextInput from "../../components/TextInput";
+import Button from "../../components/Button";
 
 const ProductList = () => {
+  const navigate = useNavigate();
+
+  const handleAddProduct = () => {
+    navigate("/products/create");
+  };
+
   return (
     <div className="mt-[77px] ml-[30px] text-[32px] text-white">
-      <div className="w-[1387px] h-[140px] bg-[#0C0C0C] rounded-[13px] flex justify-center items-center">
-        <div>Search Product By Name</div>
+      <div className="w-[1387px] h-[140px] flex">
+        <div className="bg-[#0C0C0C] rounded-[13px] flex justify-center items-center w-[1070px] h-[140px]">
+          <TextInput
+            className="text-[32px] w-full"
+            placeholder="Search Product By Name"
+          />
+        </div>
+        <div className="ml-[22px]">
+          <Button
+            color="#0047FF"
+            text="Save"
+            className="w-[289px] h-[140px]"
+            onClick={handleAddProduct}
+          />
+        </div>
       </div>
       <div className="mt-[44px]">
         <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
