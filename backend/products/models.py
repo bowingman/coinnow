@@ -7,7 +7,8 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
     description = models.TextField()
-    image = models.TextField()
+    # image = models.TextField()
+    image = models.ImageField(upload_to='images/products/')
     current_price = models.IntegerField()
     minimum_price = models.IntegerField()
     maximum_price = models.IntegerField()
