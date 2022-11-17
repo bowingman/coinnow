@@ -59,6 +59,31 @@ const CreateProduct = () => {
     });
   };
 
+  const handleCategorySave = () => {
+    let form_data = new FormData();
+    if (fileContent) {
+      form_data.append("image_url", fileContent, fileContent.name);
+    }
+    form_data.append("name", "Category1");
+
+    const result = axios
+      .post("http://localhost:8000/api/categories/", form_data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        return res;
+      })
+      .catch((error) => {
+        return error.response;
+      });
+    if (result.status === 201) {
+      console.log("succeed");
+    }
+    return result;
+  };
+
   return (
     <div className="mt-[77px] ml-[93px] pl-[36px] pr-[43px] bg-[#222222] rounded-[13px] w-[1379px]">
       <div className="mt-[22px]">
@@ -205,7 +230,14 @@ const CreateProduct = () => {
                 </div>
               </div>
               <div className="w-full flex mt-[93px]">
-                <div className="w-1/2" />
+                <div className="w-1/2">
+                  <Button
+                    color="#0047FF"
+                    text="Category Save"
+                    className="w-[438px] h-[104px]"
+                    onClick={handleCategorySave}
+                  />
+                </div>
                 <div className="w-1/2 pl-[42px]">
                   <Button
                     color="#0047FF"
