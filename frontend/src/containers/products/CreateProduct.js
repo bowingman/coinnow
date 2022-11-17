@@ -85,7 +85,7 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="mt-[77px] ml-[93px] pl-[36px] pr-[43px] bg-[#222222] rounded-[13px] w-[1379px]">
+    <div className="mt-[77px] ml-[93px] pl-[36px] pr-[43px] bg-[#222222] rounded-[13px] w-[1379px] mb-[30px]">
       <div className="mt-[22px]">
         <Button
           color={`${pageType === "general" ? "#0047FF" : "#0C0C0C"}`}
@@ -115,7 +115,7 @@ const CreateProduct = () => {
             </div>
             <div className="mt-[30px]">
               <select
-                className="h-[98px] rounded-[13px] text-[32px] w-full bg-[#0C0C0C] text-white"
+                className="h-[98px] rounded-[13px] text-[32px] w-full bg-[#0C0C0C] text-white pl-[83px]"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -123,18 +123,10 @@ const CreateProduct = () => {
                 <option value="category1">Category 1</option>
                 <option value="category2">Category 2</option>
               </select>
-              {/* <TextInput
-                className="h-[98px] rounded-[13px] text-[32px]"
-                name={name}
-                onChange={(e) => setName(e.target.value)}
-                value=""
-                type="select"
-                placeholder="Select Category"
-              /> */}
             </div>
             <div className="mt-[14px]">
               <TextArea
-                className="h-[400px] rounded-[13px] text-[32px] w-full"
+                className="h-[400px] rounded-[13px] text-[32px] w-full pl-[83px] pt-3"
                 placeholder="Description"
                 name="description"
                 value={description}

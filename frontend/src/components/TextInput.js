@@ -13,7 +13,7 @@ const TextInput = ({
     <div className={``}>
       {label && <label className="text-white text-[32px]">{label}</label>}
       <input
-        className={`${className} w-full bg-[#0C0C0C] text-white`}
+        className={`w-full bg-[#0C0C0C] text-white pl-5 ${className}`}
         name={name}
         value={value}
         onChange={onChange}
