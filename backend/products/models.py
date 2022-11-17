@@ -1,5 +1,12 @@
+import random
+import string
 from django.db import models
+
 from backend.categories.models import Category
+
+
+def upload_to(instance, filename):
+    return 'images/categories/{filename}'.format(filename=''.join(random.choices(string.ascii_lowercase + string.ascii_uppercase, k=30)))
 
 
 class Product(models.Model):
@@ -7,8 +14,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
     description = models.TextField()
-    # image = models.TextField()
-    image = models.ImageField(upload_to='images/products/')
+    image_url = models.ImageField(upload_to=upload_to, blank=True, null=True)
     current_price = models.IntegerField()
     minimum_price = models.IntegerField()
     maximum_price = models.IntegerField()

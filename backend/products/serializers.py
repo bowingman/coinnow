@@ -3,8 +3,10 @@ from rest_framework import serializers
 from .models import Product
 
 
-class ProductSerializer(serializers.Serializer):
+class ProductSerializer(serializers.ModelSerializer):
+    image_url = serializers.ImageField(required=False)
+
     class Meta:
         model = Product
-        fields = ['id', 'description', 'image', 'current_price', 'minimum_price',
-                  'maximum_price', 'quantity', 'auto_stock_amount', 'price_change_amount']
+        fields = ['id', 'name', 'description', 'image_url', 'current_price', 'minimum_price',
+                  'maximum_price', 'quantity', 'auto_stock_amount', 'price_change_amount', 'category_id']

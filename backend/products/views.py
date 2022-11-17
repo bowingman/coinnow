@@ -1,26 +1,19 @@
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework import generics
+from rest_framework.parsers import MultiPartParser, FormParser
 
 from .models import Product
 from .serializers import ProductSerializer
 
 
-class ProductList(ListCreateAPIView):
+class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    parser_classes = (MultiPartParser, FormParser)
 
-    def create(self, request):
-        serializer = self.get_serializer(request.POST, request.FILES)
-
-        print(request.POST, request.FILES)
-
-        if serializer.is_valid():
-            serializer.save()
-            headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    def perform_create(self, serializer):
+        serializer.save(category_id=self.request.POST['category_id'])
 
 
-class ProductDetail(RetrieveUpdateDestroyAPIView):
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

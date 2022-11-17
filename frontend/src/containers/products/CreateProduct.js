@@ -41,16 +41,16 @@ const CreateProduct = () => {
     };
 
     const formData = new FormData();
-    formData.append("productImage", fileContent, fileContent.name);
+    formData.append("image_url", fileContent, fileContent.name);
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("category", category);
-    formData.append("currentPrice", currentPrice);
-    formData.append("availableQuantity", availableQuantity);
-    formData.append("minimumPrice", minimumPrice);
-    formData.append("maximumPrice", maximumPrice);
-    formData.append("autoStockAmount", autoStockAmount);
-    formData.append("priceChangeAmount", priceChangeAmount);
+    formData.append("category_id", 3);
+    formData.append("current_price", currentPrice);
+    formData.append("quantity", availableQuantity);
+    formData.append("minimum_price", minimumPrice);
+    formData.append("maximum_price", maximumPrice);
+    formData.append("auto_stock_amount", autoStockAmount);
+    formData.append("price_change_amount", priceChangeAmount);
 
     axios.post("http://localhost:8000/api/products/", formData, {
       headers: {
