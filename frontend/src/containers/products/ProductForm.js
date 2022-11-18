@@ -16,6 +16,7 @@ const ProductFormSchema = Yup.object().shape({
   maximum_price: Yup.number().required("Required"),
   auto_stock_amount: Yup.number().required("Required"),
   price_change_amount: Yup.number().required("Required"),
+  auto_quantity_change: Yup.number().required("Required"),
 });
 
 const ProductForm = ({ product, categories, id }) => {
@@ -45,6 +46,7 @@ const ProductForm = ({ product, categories, id }) => {
       maximum_price: product ? product.maximum_price : 100,
       auto_stock_amount: product ? product.auto_stock_amount : 100,
       price_change_amount: product ? product.price_change_amount : 100,
+      auto_quantity_change: product ? product.auto_quantity_change : 100,
     },
     validationSchema: ProductFormSchema,
     onSubmit: (values) => {
@@ -224,13 +226,23 @@ const ProductForm = ({ product, categories, id }) => {
                     />
                   </div>
                 </div>
-                <div className="w-full flex mt-[93px]">
-                  <div className="w-1/2"></div>
-                  <div className="w-1/2 pl-[42px]">
+                <div className="w-full flex mt-[42px]">
+                  <div className="w-1/2">
+                    <TextInput
+                      id="auto_quantity_change"
+                      label="Auto Quantity Change"
+                      name="auto_quantity_change"
+                      type="number"
+                      className="h-[98px] rounded-[13px] text-[32px]"
+                      value={formik.values.auto_quantity_change}
+                      onChange={formik.handleChange}
+                    />
+                  </div>
+                  <div className="w-1/2 pl-[42px] mt-[45px]">
                     <Button
                       text="Save"
                       type="submit"
-                      className="w-[438px] h-[104px] bg-[#0047FF]"
+                      className="w-[438px] h-[98px] bg-[#0047FF]"
                     />
                   </div>
                 </div>

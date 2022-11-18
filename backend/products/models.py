@@ -21,3 +21,4 @@ class Product(models.Model):
     quantity = models.IntegerField()
     auto_stock_amount = models.IntegerField()
     price_change_amount = models.IntegerField()
+    auto_quantity_change = models.IntegerField(default=100)

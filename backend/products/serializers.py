@@ -9,4 +9,4 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'description', 'image_url', 'current_price', 'minimum_price',
-                  'maximum_price', 'quantity', 'auto_stock_amount', 'price_change_amount', 'category_id']
+                  'maximum_price', 'quantity', 'auto_stock_amount', 'price_change_amount', 'category_id', 'auto_quantity_change']
