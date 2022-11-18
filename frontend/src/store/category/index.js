@@ -11,14 +11,18 @@ export const getCategoriesAsync = createAsyncThunk("get_categories", () => {
   return doGetCategories().then((response) => response.data);
 });
 
-export const getCategoryAsync = createAsyncThunk("get_category", () => {
-  return doGetCategory().then((response) => response.data);
+export const getCategoryAsync = createAsyncThunk("get_category", (id) => {
+  return doGetCategory(id).then((response) => response.data);
 });
 
 export const categorySlice = createSlice({
   name: "categories",
   initialState,
-  reducers: {},
+  reducers: {
+    setCategory: (state, action) => {
+      state.category = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCategoriesAsync.pending, (state) => {
@@ -36,7 +40,7 @@ export const categorySlice = createSlice({
       })
       .addCase(getCategoryAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        status.category = action.payload;
+        state.category = action.payload;
       })
       .addCase(getCategoryAsync.rejected, (state) => {
         state.status = "failed";
@@ -46,5 +50,7 @@ export const categorySlice = createSlice({
 
 export const selectCategories = (state) => state.categories.categories;
 export const selectCategory = (state) => state.categories.category;
+
+export const { setCategory } = categorySlice.actions;
 
 export default categorySlice.reducer;

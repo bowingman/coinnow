@@ -8,6 +8,7 @@ import SideBar from "./components/layouts/sidebar";
 import ProductList from "./containers/products";
 import EditProduct from "./containers/Products/EditProduct";
 import CategoryList from "./containers/Categories";
+import EditCategory from "./containers/Categories/EditCategory";
 
 const App = () => {
   return (
@@ -17,6 +18,12 @@ const App = () => {
           <SideBar />
           <Routes>
             <Route exact path="/categories" element={<CategoryList />} />
+            <Route exact path="/categories/create" element={<EditCategory />} />
+            <Route
+              exact
+              path="/categories/:id/edit"
+              element={<EditCategory />}
+            />
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/products/create" element={<EditProduct />} />
             <Route exact path="/products/:id/edit" element={<EditProduct />} />
