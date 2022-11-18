@@ -138,7 +138,7 @@ const ProductForm = ({ product, categories, id }) => {
                   text="Upload Image"
                   className={`w-[438px] h-[98px] ${
                     fileContentError && "border-4 border-red-700"
-                  }`}
+                  } ${fileContent && "border-4 border-green-500"}`}
                   onClick={handleUpload}
                 />
                 <input
