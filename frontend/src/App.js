@@ -4,7 +4,8 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import SideBar from "./components/layouts/sidebar";
 import ProductList from "./containers/products";
-import ProductCreate from "./containers/products/createProduct";
+import CreateProduct from "./containers/products/createProduct";
+import EditProduct from "./containers/Products/EditProduct";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <SideBar />
         <Routes>
           <Route exact path="/products" element={<ProductList />} />
-          <Route exact path="/products/create" element={<ProductCreate />} />
+          <Route exact path="/products/create" element={<CreateProduct />} />
+          <Route exact path="/products/:id/edit" element={<EditProduct />} />
           <Route
             exact
             path="/login"

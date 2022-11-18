@@ -6,20 +6,6 @@ import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
 import ProductItem from "../../components/ProductItesm";
 
-// const products = [
-// {
-//   id: 0,
-//   name: "Product Name",
-//   quantity: "Available Quantity",
-//   total: "Total Owned By Users",
-//   current_price: "Current Price",
-// },
-//   { id: 1, name: "product1", quantity: 100, total: 100, current_price: 2000 },
-//   { id: 2, name: "product2", quantity: 100, total: 100, current_price: 2000 },
-//   { id: 3, name: "product3", quantity: 100, total: 100, current_price: 2000 },
-//   { id: 4, name: "product4", quantity: 100, total: 100, current_price: 2000 },
-// ];
-
 const ProductList = () => {
   const navigate = useNavigate();
 
@@ -32,6 +18,10 @@ const ProductList = () => {
 
   const handleAddProduct = () => {
     navigate("/products/create");
+  };
+
+  const handleEditProduct = (id) => {
+    navigate(`/products/${id}/edit`);
   };
 
   return (
@@ -68,9 +58,12 @@ const ProductList = () => {
           {products.map((product) => (
             <div key={product.id} className="flex">
               <ProductItem product={product} />
-              <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
-                Edit
-              </button>
+              <Button
+                color="#0047FF"
+                className="w-[110px] h-[110px] ml-[26px]"
+                text="Edit"
+                onClick={() => handleEditProduct(product.id)}
+              />
             </div>
           ))}
         </div>
