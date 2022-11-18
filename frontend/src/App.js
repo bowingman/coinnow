@@ -8,6 +8,7 @@ import SideBar from "./components/layouts/sidebar";
 import ProductList from "./containers/products";
 import CreateProduct from "./containers/products/createProduct";
 import EditProduct from "./containers/Products/EditProduct";
+import CategoryList from "./containers/Categories";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <div className="bg-[#292B2E] w-screen flex">
           <SideBar />
           <Routes>
+            <Route exact path="/categories" element={<CategoryList />} />
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/products/create" element={<CreateProduct />} />
             <Route exact path="/products/:id/edit" element={<EditProduct />} />

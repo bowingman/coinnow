@@ -12,6 +12,10 @@ const SideBar = () => {
     navigate("/products");
   };
 
+  const handleCategory = () => {
+    navigate("/categories");
+  };
+
   const handleUser = () => {
     navigate("/users");
   };
@@ -27,7 +31,10 @@ const SideBar = () => {
         </div>
       </div>
       <div className="pt-[170px] ml-[37px] text-[30px] text-white">
-        <div className="cursor-pointer" onClick={handleProduct}>
+        <div className="cursor-pointer" onClick={handleCategory}>
+          {">Categories"}
+        </div>
+        <div className="mt-8 cursor-pointer" onClick={handleProduct}>
           {">Products"}
         </div>
         <div className="mt-8 cursor-pointer" onClick={handleUser}>
