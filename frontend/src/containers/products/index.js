@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { getProductsAsync, selectProducts } from "../../store/product";
 
 import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
@@ -8,13 +10,17 @@ import ProductItem from "../../components/ProductItesm";
 
 const ProductList = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const [products, setProducts] = useState([]);
+  const products = useAppSelector(selectProducts);
+
+  // const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/products/")
-      .then((res) => setProducts(res.data));
-  }, []);
+    dispatch(getProductsAsync());
+    // axios
+    //   .get("http://localhost:8000/api/products/")
+    //   .then((res) => setProducts(res.data));
+  }, [dispatch]);
 
   const handleAddProduct = () => {
     navigate("/products/create");
