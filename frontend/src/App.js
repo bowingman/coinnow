@@ -11,6 +11,7 @@ import CategoryList from "./containers/Categories";
 import EditCategory from "./containers/Categories/EditCategory";
 import UserList from "./containers/Users";
 import EditUser from "./containers/Users/EditUser";
+import RecordsList from "./containers/Users/RecordsList";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
             <Route exact path="/users" element={<UserList />} />
             <Route exact path="/users/create" element={<EditUser />} />
             <Route exact path="/users/:id/edit" element={<EditUser />} />
+            <Route exact path="/users/:id/records" element={<RecordsList />} />
           </Routes>
         </div>
       </BrowserRouter>

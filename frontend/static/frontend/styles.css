@@ -543,6 +543,9 @@ video {
 .mt-\[45px\] {
   margin-top: 45px;
 }
+.mr-\[26px\] {
+  margin-right: 26px;
+}
 .flex {
   display: flex;
 }
