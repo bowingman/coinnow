@@ -9,6 +9,8 @@ import ProductList from "./containers/products";
 import EditProduct from "./containers/Products/EditProduct";
 import CategoryList from "./containers/Categories";
 import EditCategory from "./containers/Categories/EditCategory";
+import UserList from "./containers/Users";
+import EditUser from "./containers/Users/EditUser";
 
 const App = () => {
   return (
@@ -27,46 +29,9 @@ const App = () => {
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/products/create" element={<EditProduct />} />
             <Route exact path="/products/:id/edit" element={<EditProduct />} />
-            <Route
-              exact
-              path="/login"
-              element={
-                <div>
-                  <div className="text-xl md:text-lg">
-                    <div className="m-auto text-center">
-                      Made with ❤️ using
-                      <a
-                        href="https://docs.djangoproject.com/en/3.2/"
-                        className="font-bold text-red-500"
-                        target="_blank"
-                      >
-                        {" "}
-                        Django
-                      </a>
-                      ,
-                      <a
-                        href="https://reactjs.org/docs/getting-started.html"
-                        className="font-bold text-react"
-                        target="_blank"
-                      >
-                        {" "}
-                        React
-                      </a>{" "}
-                      and
-                      <a
-                        href="https://tailwindcss.com/docs"
-                        className="font-bold text-tailwind"
-                        target="_blank"
-                      >
-                        {" "}
-                        Tailwind CSS
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              }
-            />
-            <Route exact path="/register" element={<div>456</div>} />
+            <Route exact path="/users" element={<UserList />} />
+            <Route exact path="/users/create" element={<EditUser />} />
+            <Route exact path="/users/:id/edit" element={<EditUser />} />
           </Routes>
         </div>
       </BrowserRouter>
