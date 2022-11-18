@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'backend.categories',
     'backend.products',
     'backend.users',
+    'backend.histories',
 ]
 
 MIDDLEWARE = [
