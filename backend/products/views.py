@@ -17,3 +17,6 @@ class ProductList(generics.ListCreateAPIView):
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+    def perform_update(self, serializer):
+        serializer.save(category_id=self.request.POST['category_id'])

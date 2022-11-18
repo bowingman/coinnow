@@ -6,7 +6,6 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import SideBar from "./components/layouts/sidebar";
 import ProductList from "./containers/products";
-import CreateProduct from "./containers/products/createProduct";
 import EditProduct from "./containers/Products/EditProduct";
 import CategoryList from "./containers/Categories";
 
@@ -19,7 +18,7 @@ const App = () => {
           <Routes>
             <Route exact path="/categories" element={<CategoryList />} />
             <Route exact path="/products" element={<ProductList />} />
-            <Route exact path="/products/create" element={<CreateProduct />} />
+            <Route exact path="/products/create" element={<EditProduct />} />
             <Route exact path="/products/:id/edit" element={<EditProduct />} />
             <Route
               exact
