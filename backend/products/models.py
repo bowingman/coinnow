@@ -6,7 +6,7 @@ from backend.categories.models import Category
 
 
 def upload_to(instance, filename):
-    return 'images/categories/{filename}'.format(filename=''.join(random.choices(string.ascii_lowercase + string.ascii_uppercase, k=30)))
+    return 'images/products/{filename}'.format(filename=''.join(random.choices(string.ascii_lowercase + string.ascii_uppercase, k=30)))
 
 
 class Product(models.Model):

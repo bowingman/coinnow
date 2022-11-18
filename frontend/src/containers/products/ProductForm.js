@@ -1,14 +1,27 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import Button from "../../components/Button";
 import TextInput from "../../components/TextInput";
 import TextArea from "../../components/TextArea";
 
+const ProductFormSchema = Yup.object().shape({
+  name: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  current_price: Yup.number().required("Required"),
+  quantity: Yup.number().required("Required"),
+  minimum_price: Yup.number().required("Required"),
+  maximum_price: Yup.number().required("Required"),
+  auto_stock_amount: Yup.number().required("Required"),
+  price_change_amount: Yup.number().required("Required"),
+});
+
 const ProductForm = ({ product, categories, id }) => {
   const [pageType, setPageType] = useState("general");
   const [fileContent, setFileContent] = useState(null);
+  const [fileContentError, setFileContentError] = useState(null);
 
   const file = useRef();
 
@@ -18,6 +31,7 @@ const ProductForm = ({ product, categories, id }) => {
 
   const handleFineChange = (e) => {
     setFileContent(e.target.files[0]);
+    setFileContentError(null);
   };
 
   const formik = useFormik({
@@ -32,9 +46,12 @@ const ProductForm = ({ product, categories, id }) => {
       auto_stock_amount: product ? product.auto_stock_amount : 100,
       price_change_amount: product ? product.price_change_amount : 100,
     },
+    validationSchema: ProductFormSchema,
     onSubmit: (values) => {
       const formData = new FormData();
-      formData.append("image_url", fileContent, fileContent.name);
+      if (fileContent) {
+        formData.append("image_url", fileContent, fileContent.name);
+      }
 
       for (let value in values) {
         formData.append(value, values[value]);
@@ -47,6 +64,10 @@ const ProductForm = ({ product, categories, id }) => {
           },
         });
       } else {
+        if (!fileContent) {
+          setFileContentError("Required");
+          return;
+        }
         axios.post("http://localhost:8000/api/products/", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -115,7 +136,9 @@ const ProductForm = ({ product, categories, id }) => {
                 <Button
                   color="#0C0C0C"
                   text="Upload Image"
-                  className="w-[438px] h-[98px]"
+                  className={`w-[438px] h-[98px] ${
+                    fileContentError && "border-4 border-red-700"
+                  }`}
                   onClick={handleUpload}
                 />
                 <input

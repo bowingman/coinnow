@@ -612,6 +612,13 @@ video {
 .rounded-\[13px\] {
   border-radius: 13px;
 }
+.border-4 {
+  border-width: 4px;
+}
+.border-red-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
+}
 .bg-\[\#292B2E\] {
   --tw-bg-opacity: 1;
   background-color: rgb(41 43 46 / var(--tw-bg-opacity));
@@ -682,6 +689,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 @media (min-width: 768px) {
 
