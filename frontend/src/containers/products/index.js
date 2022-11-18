@@ -1,136 +1,78 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import TextInput from "../../components/TextInput";
 import Button from "../../components/Button";
+import ProductItem from "../../components/ProductItesm";
+
+// const products = [
+// {
+//   id: 0,
+//   name: "Product Name",
+//   quantity: "Available Quantity",
+//   total: "Total Owned By Users",
+//   current_price: "Current Price",
+// },
+//   { id: 1, name: "product1", quantity: 100, total: 100, current_price: 2000 },
+//   { id: 2, name: "product2", quantity: 100, total: 100, current_price: 2000 },
+//   { id: 3, name: "product3", quantity: 100, total: 100, current_price: 2000 },
+//   { id: 4, name: "product4", quantity: 100, total: 100, current_price: 2000 },
+// ];
 
 const ProductList = () => {
   const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/products/")
+      .then((res) => setProducts(res.data));
+  }, []);
 
   const handleAddProduct = () => {
     navigate("/products/create");
   };
 
   return (
-    <div className="mt-[77px] ml-[30px] text-[32px] text-white">
-      <div className="w-[1387px] h-[140px] flex">
-        <div className="bg-[#0C0C0C] rounded-[13px] flex justify-center items-center w-[1070px] h-[140px]">
+    <div className="pt-[77px] px-[30px] w-full text-[32px] text-white">
+      <div className="h-[140px] flex">
+        <div className="bg-[#0C0C0C] rounded-[13px] flex justify-center items-center w-full h-[140px]">
           <TextInput
             className="text-[32px] w-full"
             placeholder="Search Product By Name"
           />
         </div>
-        <div className="ml-[22px]">
+        <div className="ml-[22px] mr-[145px]">
           <Button
             color="#0047FF"
-            text="Save"
+            text="Add New"
             className="w-[289px] h-[140px]"
             onClick={handleAddProduct}
           />
         </div>
       </div>
       <div className="mt-[44px]">
-        <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
-          <div className="flex w-full">
-            <div className="w-1/4 flex items-center">
-              <div className="ml-[76px]">Product Name</div>
-            </div>
-            <div className="w-1/4 flex items-center">
-              <div className="ml-[76px]">Available Quantity</div>
-            </div>
-            <div className="w-1/3 flex items-center">
-              <div className="ml-[76px]">Total Owned By Users</div>
-            </div>
-            <div className="w-1/6 flex items-center">
-              <div className="ml-[30px]">Current Price</div>
-            </div>
-          </div>
+        <div className="flex mr-[136px]">
+          <ProductItem
+            product={{
+              id: 0,
+              name: "Product Name",
+              quantity: "Available Quantity",
+              total: "Total Owned By Users",
+              current_price: "Current Price",
+            }}
+          />
         </div>
-        <div className="mt-[22px]">
-          <div className="mb-[25px] flex">
-            <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
-              <div className="flex w-full">
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">Product1</div>
-                </div>
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">400</div>
-                </div>
-                <div className="w-1/3 flex items-center">
-                  <div className="ml-[76px]">100</div>
-                </div>
-                <div className="w-1/6 flex items-center">
-                  <div className="ml-[30px]">2000</div>
-                </div>
-              </div>
+        <div className="h-[calc(100vh-400px)] overflow-y-auto">
+          {products.map((product) => (
+            <div key={product.id} className="flex">
+              <ProductItem product={product} />
+              <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
+                Edit
+              </button>
             </div>
-            <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
-              Edit
-            </button>
-          </div>
-          <div className="mb-[25px] flex">
-            <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
-              <div className="flex w-full">
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">Product1</div>
-                </div>
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">400</div>
-                </div>
-                <div className="w-1/3 flex items-center">
-                  <div className="ml-[76px]">100</div>
-                </div>
-                <div className="w-1/6 flex items-center">
-                  <div className="ml-[30px]">2000</div>
-                </div>
-              </div>
-            </div>
-            <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
-              Edit
-            </button>
-          </div>
-          <div className="mb-[25px] flex">
-            <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
-              <div className="flex w-full">
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">Product1</div>
-                </div>
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">400</div>
-                </div>
-                <div className="w-1/3 flex items-center">
-                  <div className="ml-[76px]">100</div>
-                </div>
-                <div className="w-1/6 flex items-center">
-                  <div className="ml-[30px]">2000</div>
-                </div>
-              </div>
-            </div>
-            <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
-              Edit
-            </button>
-          </div>
-          <div className="mb-[25px] flex">
-            <div className="w-[1387px] h-[110px] bg-[#222222] rounded-[13px] flex items-center">
-              <div className="flex w-full">
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">Product1</div>
-                </div>
-                <div className="w-1/4 flex items-center">
-                  <div className="ml-[76px]">400</div>
-                </div>
-                <div className="w-1/3 flex items-center">
-                  <div className="ml-[76px]">100</div>
-                </div>
-                <div className="w-1/6 flex items-center">
-                  <div className="ml-[30px]">2000</div>
-                </div>
-              </div>
-            </div>
-            <button className="bg-[#0047FF] w-[110px] h-[110px] rounded-[13px] ml-[26px]">
-              Edit
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </div>

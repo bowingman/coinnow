@@ -9,7 +9,7 @@ import ProductCreate from "./containers/products/createProduct";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="bg-[#292B2E] h-screen w-screen flex">
+      <div className="bg-[#292B2E] w-screen flex">
         <SideBar />
         <Routes>
           <Route exact path="/products" element={<ProductList />} />
