@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'frontend',
     'backend.categories',
     'backend.products',
+    'backend.users',
 ]
 
 MIDDLEWARE = [
